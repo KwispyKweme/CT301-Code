@@ -1,6 +1,9 @@
 #include "element.h"
 #include <string>
 #include <stdexcept>
+int int_value;
+double double_value;
+bool double_type;
 Element::Element(int newInt) // Consider Member Initializer List
 {
     int_value = newInt;
