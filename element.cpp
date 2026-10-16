@@ -1,7 +1,7 @@
 #include "element.h"
 #include <string>
 #include <stdexcept>
-Element::Element(int newInt)
+Element::Element(int newInt) // Consider Member Initializer List
 {
     int_value = newInt;
     double_value = newInt;
@@ -81,9 +81,9 @@ Element operator/(const Element &left, const Element &right)
 }
 Element operator%(const Element &left, const Element &right)
 {
-    if (left.isDouble() || right.isDouble())
+    if (left.isDouble() || right.isDouble() || right.int_value == 0)
     {
-        throw std::domain_error("Modulo with floating point values not allowed");
+        throw std::domain_error("Modulo with floating point values or Zero is not allowed");
     }
-    return Element(left.intValue() + right.intValue());
+    return Element(left.intValue() % right.intValue());
 }
