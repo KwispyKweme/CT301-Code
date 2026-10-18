@@ -4,15 +4,13 @@
 int int_value;
 double double_value;
 bool double_type;
-Element::Element(int newInt) // Consider Member Initializer List
+Element::Element(int newInt)
 {
     int_value = newInt;
-    double_value = newInt;
     double_type = false;
 }
 Element::Element(double newDouble)
 {
-    int_value = static_cast<int>(newDouble);
     double_value = newDouble;
     double_type = true;
 }
@@ -49,7 +47,7 @@ bool Element::isDouble() const
 {
     return double_type;
 }
-// All Operator functions are practically the same, save for modulo
+// All Operator functions are practically the same, save for modulo and division
 Element operator+(const Element &left, const Element &right)
 {
     if (left.isDouble() || right.isDouble())
@@ -76,6 +74,10 @@ Element operator*(const Element &left, const Element &right)
 }
 Element operator/(const Element &left, const Element &right)
 {
+    if (right.Value() == 0)
+    {
+        throw std::domain_error("Division by zero is not allowed");
+    }
     if (left.isDouble() || right.isDouble())
     {
         return Element(left.double_value / right.double_value);
@@ -89,4 +91,16 @@ Element operator%(const Element &left, const Element &right)
         throw std::domain_error("Modulo with floating point values or Zero is not allowed");
     }
     return Element(left.intValue() % right.intValue());
+}
+std::ostream &operator<<(std::ostream &os, const Element &e)
+{
+    if (e.double_type)
+    {
+        os << e.double_type;
+    }
+    else
+    {
+        os << e.int_value;
+    }
+    return os;
 }

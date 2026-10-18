@@ -22,4 +22,5 @@ public:
     friend Element operator*(const Element &left, const Element &right);
     friend Element operator/(const Element &left, const Element &right);
     friend Element operator%(const Element &left, const Element &right);
+    friend std::ostream &operator<<(std::ostream &os, const Element &e);
 };
