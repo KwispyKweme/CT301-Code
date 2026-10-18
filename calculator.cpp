@@ -70,7 +70,7 @@ int FileMode(std::string File_Path)
             std::cerr << "Invalid equation on line " << line_num << std::endl;
             return 2 + line_num;
         }
-        for (size_t i = 0; i < left.length(); ++i) // int was changed to size_t becasue of error received by auto grader script
+        for (size_t i = 0; i < left.length(); ++i)
         {
             if (!std::isdigit(left[i]) && left[i] != '.')
             {
@@ -78,7 +78,7 @@ int FileMode(std::string File_Path)
                 return 2 + line_num;
             }
         }
-        for (size_t i = 0; i < right.length(); ++i) // int was changed to size_t becasue of error received by auto grader script
+        for (size_t i = 0; i < right.length(); ++i)
         {
             if (!std::isdigit(right[i]) && right[i] != '.')
             {
@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
         std::string left = argv[1];
         std::string op = argv[2];
         std::string right = argv[3];
-        for (size_t i = 0; i < left.length(); ++i) // int was changed to size_t becasue of error received by auto grader script
+        for (size_t i = 0; i < left.length(); ++i)
         {
             if (!std::isdigit(left[i]) && left[i] != '.')
             {
@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
                 return 3;
             }
         }
-        for (size_t i = 0; i < right.length(); ++i) // int was changed to size_t becasue of error received by auto grader script
+        for (size_t i = 0; i < right.length(); ++i)
         {
             if (!std::isdigit(right[i]) && right[i] != '.')
             {
