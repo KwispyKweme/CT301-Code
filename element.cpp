@@ -1,6 +1,7 @@
 #include "element.h"
 #include <string>
 #include <stdexcept>
+#include <iostream>
 
 Element::Element(int newInt)
 {
@@ -45,12 +46,28 @@ bool Element::isDouble() const
 {
     return double_type;
 }
+void Element::Value(double newVal)
+{
+    double_value = newVal;
+    int_value = static_cast<int>(newVal);
+}
+void Element::ChnageType()
+{
+    if(double_type){
+        int_value = static_cast<int>(double_value);
+        double_value = sttaic_cast<double>(int_value);
+        double_type = false;
+    }
+    else{
+        double_type = true;
+    }
+}
 // All Operator functions are practically the same, save for modulo and division
 Element operator+(const Element &left, const Element &right)
 {
     if (left.isDouble() || right.isDouble())
     {
-        return Element(left.double_value + right.double_value);
+        return Element(left.Value() + right.Value();
     }
     return Element(left.intValue() + right.intValue());
 }
@@ -58,7 +75,7 @@ Element operator-(const Element &left, const Element &right)
 {
     if (left.isDouble() || right.isDouble())
     {
-        return Element(left.double_value - right.double_value);
+        return Element(left.Value() - right.Value());
     }
     return Element(left.intValue() - right.intValue());
 }
@@ -66,7 +83,7 @@ Element operator*(const Element &left, const Element &right)
 {
     if (left.isDouble() || right.isDouble())
     {
-        return Element(left.double_value * right.double_value);
+        return Element(left.Value() * right.Value());
     }
     return Element(left.intValue() * right.intValue());
 }
@@ -78,7 +95,7 @@ Element operator/(const Element &left, const Element &right)
     }
     if (left.isDouble() || right.isDouble())
     {
-        return Element(left.double_value / right.double_value);
+        return Element(left.Value() / right.Value());
     }
     return Element(left.intValue() / right.intValue());
 }
@@ -94,7 +111,7 @@ std::ostream &operator<<(std::ostream &os, const Element &e)
 {
     if (e.double_type)
     {
-        os << e.double_type;
+        os << e.double_value;
     }
     else
     {
