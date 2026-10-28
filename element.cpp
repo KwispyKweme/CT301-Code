@@ -51,14 +51,16 @@ void Element::Value(double newVal)
     double_value = newVal;
     int_value = static_cast<int>(newVal);
 }
-void Element::ChnageType()
+void Element::ChangeType()
 {
-    if(double_type){
+    if (double_type)
+    {
         int_value = static_cast<int>(double_value);
-        double_value = sttaic_cast<double>(int_value);
+        double_value = static_cast<double>(int_value);
         double_type = false;
     }
-    else{
+    else
+    {
         double_type = true;
     }
 }
@@ -67,7 +69,7 @@ Element operator+(const Element &left, const Element &right)
 {
     if (left.isDouble() || right.isDouble())
     {
-        return Element(left.Value() + right.Value();
+        return Element(left.Value() + right.Value());
     }
     return Element(left.intValue() + right.intValue());
 }

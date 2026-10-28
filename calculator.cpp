@@ -70,7 +70,7 @@ int FileMode(std::string File_Path)
             std::cerr << "Invalid equation on line " << line_num << std::endl;
             return 2 + line_num;
         }
-        for (size_t i = 0; i < left.length(); ++i) // Note AI was used to get the size_t type due to an error thrown by the auto grader script which I was not able to fix myself. AI was not used foir any other code
+        for (size_t i = 0; i < left.length(); ++i)
         {
             if (!std::isdigit(left[i]) && left[i] != '.')
             {
