@@ -5,42 +5,36 @@
 #include <fstream>
 #include <sstream>
 #include "element.h"
-int Do_Math(std::string left, char op, std::string right)
+int Do_Math(const Element &left, char op, const Element &right)
 {
-    if (op == '%')
+    try
     {
-        int left_el = stoi(left);
-        int right_el = stoi(right);
-        int result = left_el % right_el;
-        std::cout << result << std::endl;
-        return 0;
-    }
-    else
-    {
-        double left_el = stod(left);
-        double right_el = stod(right);
-        double result;
         switch (op)
         {
         case '+':
-            result = left_el + right_el;
-            std::cout << result << std::endl;
+            std::cout << (left + right) << std::endl;
             return 0;
         case '*':
-            result = left_el * right_el;
-            std::cout << result << std::endl;
+            std::cout << (left - right) << std::endl;
             return 0;
         case '/':
-            result = left_el / right_el;
-            std::cout << result << std::endl;
+            std::cout << (left / right) << std::endl;
             return 0;
         case '-':
-            result = left_el - right_el;
-            std::cout << result << std::endl;
+            std::cout << (left - right) << std::endl;
+            return 0;
+        case '%':
+            std::cout << (left % right) << std::endl;
             return 0;
         default:
-            return 1;
+            std::cerr << "Invalid Operator" << std::endl;
+            return 4;
         }
+    }
+    catch (const std::domain_error &e)
+    {
+        std::cerr << e.what() << std::endl;
+        return 5;
     }
 }
 
