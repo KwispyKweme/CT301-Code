@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 class Element
@@ -8,15 +9,16 @@ private:
     bool double_type;
 
 public:
+    Element();
     Element(int newInt);
     Element(double newDouble);
     Element(const std::string &newVal);
-    double Value() const;
-    double DoubleValue() const;
-    int intValue() const;
-    bool isDouble() const;
-    void Value(double newVal);
-    void ChangeType();
+    virtual double Value() const;
+    virtual double DoubleValue() const;
+    virtual int intValue() const;
+    virtual bool isDouble() const;
+    virtual void Value(double newVal);
+    virtual void ChangeType();
     friend Element operator+(const Element &left, const Element &right);
     friend Element operator-(const Element &left, const Element &right);
     friend Element operator*(const Element &left, const Element &right);

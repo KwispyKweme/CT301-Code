@@ -1,13 +1,14 @@
-#ifndef element.h
-#define element .h
-
+#pragma once
 #include <stdexcept>
 #include <string>
 
-class InvalidElement : std::invalid_argument
+class InvalidElement : public std::invalid_argument
 {
 public:
-    explicit InvalidElement(const std::string &message) : std::invalid_argument(message) {}
+    InvalidElement(const std::string &message) : std::invalid_argument(message) {}
 };
-
-#endif
+class InvalidOperator : public std::invalid_argument
+{
+public:
+    InvalidOperator(const std::string &message) : std::invalid_argument(message) {}
+};
