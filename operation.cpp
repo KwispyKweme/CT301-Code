@@ -3,7 +3,7 @@
 #include <string>
 #include <sstream>
 
-Operation::Operation(const std::string &element) : Operation((element))
+Operation::Operation(const std::string &element)
 {
     std::istringstream iss(element);
     std::string leftToken;
@@ -22,11 +22,18 @@ Operation::Operation(const std::string &element) : Operation((element))
     {
         throw InvalidOperator("Invalid operator");
     }
-};
+}
 
 Operation::Operation(const Element &leftElem, char op, const Element &rightElem) : leftElem(leftElem), op(op), rightElem(rightElem)
 {
 }
 Operation::Operation(const Operation &other)
 {
+}
+std::ostream &operator<<(std::ostream &, const Operation &)
+{
+}
+void Operation::Print(std::ostream &os) const
+{
+    os << "(" << leftElem << op << rightElem << ")";
 }

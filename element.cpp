@@ -111,13 +111,16 @@ Element operator%(const Element &left, const Element &right)
 }
 std::ostream &operator<<(std::ostream &os, const Element &e)
 {
-    if (e.double_type)
+    e.Print(os);
+}
+void Element::Print(std::ostream &os) const
+{
+    if (double_type)
     {
-        os << e.double_value;
+        os << double_value;
     }
     else
     {
-        os << e.int_value;
+        os << int_value;
     }
-    return os;
 }
